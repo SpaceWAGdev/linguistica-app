@@ -2,7 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {Button, darkColors, Icon, lightColors} from '@rneui/base';
+
+function cameraPage() {
+
+}
+
+function cardInfo() {}
+
+// TODO: cardLists(cards), cardManager()
 
 export default function App() {
   const [facing, setFacing] = useState<CameraType>('back');
@@ -30,14 +39,16 @@ export default function App() {
   return (
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing}>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity>
+        <View>
+            <Button color='#A95089' onPress={toggleCameraFacing}>
+              <Icon name='cameraswitch' color={lightColors.white}/>
+            </Button>
         </View>
       </CameraView>
     </View>
   );
+
+  
 }
 
 const styles = StyleSheet.create({
@@ -51,21 +62,5 @@ const styles = StyleSheet.create({
   },
   camera: {
     flex: 1,
-  },
-  buttonContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    margin: 64,
-  },
-  button: {
-    flex: 1,
-    alignSelf: 'flex-end',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
-  },
+  }
 });
