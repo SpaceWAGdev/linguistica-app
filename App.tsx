@@ -1,68 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
 
-import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
-import { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import {Button, darkColors, Icon} from '@rneui/base';
+import { createStaticNavigation, useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import theme from './src/theme';
-
-
-function cameraPage() {
-
-}
-
-function cardInfo() {}
+import { cameraPage } from './src/pages/cameraPage';
+import { cardInfo } from './src/pages/cardInfo';
 
 // TODO: cardLists(cards), cardManager()
 
-export default function App() {
-  const [facing, setFacing] = useState<CameraType>('back');
-  const [permission, requestPermission] = useCameraPermissions();
+const navigation = useNavigation();
 
-  if (!permission) {
-    // Camera permissions are still loading.
-    return <View />;
-  }
-
-  if (!permission.granted) {
-    // Camera permissions are not granted yet.
-    return (
-      <View style={styles.container}>
-        <Text style={styles.message}>We need your permission to show the camera</Text>
-        <Button onPress={requestPermission} title="grant permission" />
-      </View>
-    );
-  }
-
-  function toggleCameraFacing() {
-    setFacing((current: string) => (current === 'back' ? 'front' : 'back'));
-  }
-
-  return (
-    <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing}>
-        <View>
-            <Button color={theme.lightColors?.primary} onPress={toggleCameraFacing}>
-              <Icon name='cameraswitch' color='#fff'/>
-            </Button>
-        </View>
-      </CameraView>
-    </View>
-  );
-
-  
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+const Stack = createNativeStackNavigator({
+  screens: {
+    Home: cameraPage,
   },
-  message: {
-    textAlign: 'center',
-    paddingBottom: 10,
-  },
-  camera: {
-    flex: 1,
-  }
 });
+
+const Navigation = createStaticNavigation(Stack);
+
+export default function App(){
+  return <Navigation></Navigation>
+}
