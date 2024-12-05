@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {Button, darkColors, Icon, lightColors} from '@rneui/base';
 
 export default function App() {
   const [facing, setFacing] = useState<CameraType>('back');
@@ -31,9 +32,9 @@ export default function App() {
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing}>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity>
+            <Button color='#A95089' onPress={toggleCameraFacing}>
+              <Icon name='cameraswitch' color={lightColors.white}/>
+            </Button>
         </View>
       </CameraView>
     </View>
