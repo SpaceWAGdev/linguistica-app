@@ -3,7 +3,9 @@ import { StatusBar } from 'expo-status-bar';
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import {Button, darkColors, Icon, lightColors} from '@rneui/base';
+import {Button, darkColors, Icon} from '@rneui/base';
+import theme from './src/theme';
+
 
 function cameraPage() {
 
@@ -40,8 +42,8 @@ export default function App() {
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing}>
         <View>
-            <Button color='#A95089' onPress={toggleCameraFacing}>
-              <Icon name='cameraswitch' color={lightColors.white}/>
+            <Button color={theme.lightColors?.primary} onPress={toggleCameraFacing}>
+              <Icon name='cameraswitch' color='#fff'/>
             </Button>
         </View>
       </CameraView>

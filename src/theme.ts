@@ -1,6 +1,6 @@
 import { ThemeProvider, createTheme } from '@rneui/themed';
 
-const theme = createTheme({
+export default createTheme({
   lightColors: {
     primary: '#e7e7e8',
     secondary: '#000',
