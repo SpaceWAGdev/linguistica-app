@@ -4,15 +4,17 @@ import { View, Text } from 'react-native';
 import { createStaticNavigation, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import 'react-native-worklets-core';
+
 import theme from './src/theme';
-import { cameraPage } from './src/pages/cameraPage';
+import { CameraPage } from './src/pages/cameraPage';
 import { cardInfo } from './src/pages/cardInfo';
 
 // TODO: cardLists(cards), cardManager()
 
 const Stack = createNativeStackNavigator({
   screens: {
-    'Camera Page': cameraPage,
+    'Camera Page': CameraPage,
     CardInfo: cardInfo
   },
 });
