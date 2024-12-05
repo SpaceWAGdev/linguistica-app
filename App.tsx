@@ -12,7 +12,7 @@ import { cardInfo } from './src/pages/cardInfo';
 
 const Stack = createNativeStackNavigator({
   screens: {
-    Home: cameraPage,
+    'Camera Page': cameraPage,
     CardInfo: cardInfo
   },
 });
