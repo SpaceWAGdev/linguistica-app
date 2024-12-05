@@ -1,11 +1,20 @@
-import "@expo/metro-runtime"
-import * as SplashScreen from "expo-splash-screen"
-import App from "@/app"
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 
-SplashScreen.preventAutoHideAsync()
-
-function IgniteApp() {
-  return <App hideSplashScreen={SplashScreen.hideAsync} />
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Hello</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
 }
 
-export default IgniteApp
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
