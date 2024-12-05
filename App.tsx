@@ -10,11 +10,10 @@ import { cardInfo } from './src/pages/cardInfo';
 
 // TODO: cardLists(cards), cardManager()
 
-const navigation = useNavigation();
-
 const Stack = createNativeStackNavigator({
   screens: {
     Home: cameraPage,
+    CardInfo: cardInfo
   },
 });
 
