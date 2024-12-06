@@ -34,7 +34,8 @@
   
           // optionally, if you want to record audio:
           "enableMicrophonePermission": true,
-          "microphonePermissionText": "$(PRODUCT_NAME) needs access to your Microphone."
+          "microphonePermissionText": "$(PRODUCT_NAME) needs access to your Microphone.",
+          "enableFrameProcessors": true
         }
       ]
     ]
