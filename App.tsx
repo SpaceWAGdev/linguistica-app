@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import {  NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { createStaticNavigation, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import 'react-native-worklets-core';
-
-import theme from './src/theme';
 import { CameraPage } from './src/pages/cameraPage';
 import { cardInfo } from './src/pages/cardInfo';
 
+import 'react-native-worklets-core';
+import { Card } from './src/card';
+
 // TODO: cardLists(cards), cardManager()
 
-const Stack = createNativeStackNavigator({
-  screens: {
-    'Camera Page': CameraPage,
-    CardInfo: cardInfo
-  },
-});
+export type RootStackParamList = {
+  CameraPage: undefined;  // CameraPage does not take any params
+  cardInfo: {card: Card};  // cardInfo screen expects a `Card` param
+};
 
-const Navigation = createStaticNavigation(Stack);
+const Stack = createStackNavigator<RootStackParamList>();
 
-export default function App(){
-  return <Navigation></Navigation>
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="CameraPage">
+        <Stack.Screen name="CameraPage" component={CameraPage} />
+        <Stack.Screen name="cardInfo" component={cardInfo} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
